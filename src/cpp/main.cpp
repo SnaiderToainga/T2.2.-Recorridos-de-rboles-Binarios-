@@ -52,6 +52,15 @@ void bfs(Nodo* raiz) {
     }
 }
 
+// Ejercicio 3
+int contarNodos(Nodo* raiz) {
+    if (raiz == NULL) {
+        return 0; // Caso base: si no hay nodo, suma 0
+    }
+    // Suma 1 (el nodo actual) + los nodos de la izquierda + los de la derecha
+    return 1 + contarNodos(raiz->izquierda) + contarNodos(raiz->derecha);
+}
+
 int main() {
     Nodo* raiz = new Nodo(10);
     raiz->izquierda = new Nodo(5);
@@ -94,6 +103,13 @@ int main() {
     cout << "Inorden actualizado:  "; inorden(raiz); cout << endl;
     cout << "Postorden actualizado: "; postorden(raiz); cout << endl;
     cout << "BFS actualizado:       "; bfs(raiz); cout << endl;
+    
+    // ==========================================
+    // EJERCICIO 3
+    // ==========================================
+    cout << "\n--- Ejercicio 3 ---" << endl;
+    int totalNodos = contarNodos(raiz);
+    cout << "La cantidad total de nodos en el arbol es: " << totalNodos << endl;
     
     return 0;
 }
