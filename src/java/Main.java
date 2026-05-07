@@ -61,6 +61,21 @@ public class Main {
         return 1 + contarNodos(raiz.izquierda) + contarNodos(raiz.derecha);
     }
 
+    // ==========================================
+    // EJERCICIO 4
+    // ==========================================
+    public static int contarHojas(Nodo raiz) {
+        if (raiz == null) {
+            return 0; 
+        }
+        // Si no tiene hijo izquierdo ni derecho, es una hoja
+        if (raiz.izquierda == null && raiz.derecha == null) {
+            return 1; 
+        }
+        // Si no es hoja, sigue buscando
+        return contarHojas(raiz.izquierda) + contarHojas(raiz.derecha);
+    }
+
     public static void main(String[] args) {
         Nodo raiz = new Nodo(10);
         raiz.izquierda = new Nodo(5);
@@ -113,7 +128,14 @@ public class Main {
         System.out.println("\n--- Ejercicio 3 ---");
         int totalNodos = contarNodos(raiz);
         System.out.println("La cantidad total de nodos en el arbol es: " + totalNodos);
-        
+
+        // ==========================================
+        // EJERCICIO 4
+        // ==========================================
+        System.out.println("\n--- Ejercicio 4 ---");
+        int totalHojas = contarHojas(raiz);
+        System.out.println("La cantidad total de hojas en el arbol es: " + totalHojas);
+
         System.out.println();
     }
 }
