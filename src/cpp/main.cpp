@@ -76,5 +76,24 @@ int main() {
     bfs(raiz);
 
     cout << endl;
+
+    // ==========================================
+    // EJERCICIO 2
+    // ==========================================
+    cout << "\n--- Ejercicio 2 ---" << endl;
+    
+    // Agregamos 1 y 3 como hijos del nodo 2
+    raiz->izquierda->izquierda->izquierda = new Nodo(1);
+    raiz->izquierda->izquierda->derecha = new Nodo(3);
+    
+    // Agregamos 18 y 25 como hijos del nodo 20
+    raiz->derecha->derecha->izquierda = new Nodo(18);
+    raiz->derecha->derecha->derecha = new Nodo(25);
+
+    cout << "Preorden actualizado: "; preorden(raiz); cout << endl;
+    cout << "Inorden actualizado:  "; inorden(raiz); cout << endl;
+    cout << "Postorden actualizado: "; postorden(raiz); cout << endl;
+    cout << "BFS actualizado:       "; bfs(raiz); cout << endl;
+    
     return 0;
 }
