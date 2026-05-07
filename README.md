@@ -4,6 +4,7 @@
 **Carrera:** Ingeniería de Software  
 **Asignatura:** Estructura de Datos  
 **Curso:** Tercero B  
+**Autor:** Snaider Alexander Toainga Toapanta
 **Tema:** Recorridos de árboles binarios: Inorden, Preorden, Postorden y BFS
 
 ## Objetivo general
@@ -17,6 +18,19 @@ Al finalizar la práctica, el estudiante será capaz de:
 3. Implementar BFS usando una cola.
 4. Comparar la implementación en C++ y Java.
 5. Aplicar recorridos de árboles a un caso real del proyecto final.
+
+## Desarrollo
+En este repositorio se encuentra la solución a los ejercicios propuestos en clase:
+1. **Ejercicios 1 y 2:** Construcción de un Árbol Binario de Búsqueda (BST) base y posterior inserción de nuevos nodos (1, 3, 18, 25), validando el correcto funcionamiento de los algoritmos DFS y BFS.
+2. **Ejercicios 3 y 4:** Implementación de algoritmos recursivos para contabilizar la cantidad total de nodos (11) y la cantidad de nodos hoja (6).
+3. **Ejercicio 5 (Caso Real):** Aplicación de los recorridos a un modelo de jerarquía de un Sistema Web utilizando cadenas de texto (`string`).
+
+## Explicación del Caso Real (Sistema Web)
+En el desarrollo de software profesional, representamos la arquitectura de un sistema web como un árbol binario donde la raíz es el "Sistema Web" y las ramas son sus módulos. 
+
+* **Menú Principal (Preorden):** Es el orden lógico para renderizar un menú (Raíz -> Izquierda -> Derecha). Mostramos el sistema y navegamos hacia adentro de sus categorías.
+* **Módulos Internos / Dependencias (Postorden):** Útil para tareas técnicas de limpieza o carga de dependencias. Se procesan primero las funciones hijas antes de procesar el módulo padre.
+* **Niveles de Acceso (BFS):** Sirve para cargar el sistema capa por capa de importancia o validar permisos horizontales.
 
 ## Contenido
 
