@@ -84,5 +84,22 @@ int main() {
     cout << "Postorden: "; postorden(raiz); cout << endl;
     cout << "BFS: "; bfs(raiz); cout << endl;
 
+    // ==========================================
+    // EJERCICIO 2
+    // ==========================================
+    cout << "\n--- Ejercicio 2 ---" << endl;
+    
+    // Agregamos los nuevos nodos al árbol existente
+    int nuevosValores[] = {1, 3, 18, 25};
+    for(int i = 0; i < 4; i++) {
+        raiz = insertar(raiz, nuevosValores[i]); // Se insertan siguiendo la regla del BST
+    }
+
+    // Volvemos a ejecutar los recorridos para ver el cambio
+    cout << "Preorden actualizado: "; preorden(raiz); cout << endl;
+    cout << "Inorden actualizado:  "; inorden(raiz); cout << endl;
+    cout << "Postorden actualizado: "; postorden(raiz); cout << endl;
+    cout << "BFS actualizado:       "; bfs(raiz); cout << endl;
+
     return 0;
 }
