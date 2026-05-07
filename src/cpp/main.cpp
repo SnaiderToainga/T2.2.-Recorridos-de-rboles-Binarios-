@@ -52,13 +52,31 @@ void bfs(Nodo* raiz) {
     }
 }
 
-// Ejercicio 3
+// ==========================================
+// EJERCICIO 3: Contar total de nodos
+// ==========================================
+
 int contarNodos(Nodo* raiz) {
     if (raiz == NULL) {
         return 0; // Caso base: si no hay nodo, suma 0
     }
     // Suma 1 (el nodo actual) + los nodos de la izquierda + los de la derecha
     return 1 + contarNodos(raiz->izquierda) + contarNodos(raiz->derecha);
+}
+
+// ==========================================
+// EJERCICIO 4: Contar las hojas del árbol
+// ==========================================
+int contarHojas(Nodo* raiz) {
+    if (raiz == NULL) {
+        return 0; // Si está vacío, no hay hojas
+    }
+    // Si no tiene hijo izquierdo ni derecho, es una hoja
+    if (raiz->izquierda == NULL && raiz->derecha == NULL) {
+        return 1; 
+    }
+    // Si no es hoja, sigue buscando en las ramas y suma los resultados
+    return contarHojas(raiz->izquierda) + contarHojas(raiz->derecha);
 }
 
 int main() {
@@ -110,6 +128,13 @@ int main() {
     cout << "\n--- Ejercicio 3 ---" << endl;
     int totalNodos = contarNodos(raiz);
     cout << "La cantidad total de nodos en el arbol es: " << totalNodos << endl;
+
+    // ==========================================
+    // EJERCICIO 4
+    // ==========================================
+    cout << "\n--- Ejercicio 4 ---" << endl;
+    int totalHojas = contarHojas(raiz);
+    cout << "La cantidad total de hojas en el arbol es: " << totalHojas << endl;
     
     return 0;
 }
