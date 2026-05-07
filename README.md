@@ -5,6 +5,7 @@
 **Asignatura:** Estructura de Datos  
 **Curso:** Tercero B  
 **Autor:** Snaider Alexander Toainga Toapanta
+
 **Tema:** Recorridos de árboles binarios: Inorden, Preorden, Postorden y BFS
 
 ## Objetivo general
