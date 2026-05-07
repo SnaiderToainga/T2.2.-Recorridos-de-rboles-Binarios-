@@ -13,7 +13,48 @@ class Nodo {
     }
 }
 
+//Clase Ejercicio 5
+class NodoWeb {
+    String nombre;
+    NodoWeb izquierda;
+    NodoWeb derecha;
+
+    public NodoWeb(String nombre) {
+        this.nombre = nombre;
+        this.izquierda = null;
+        this.derecha = null;
+    }
+}
+
 public class Main {
+
+    //Metodos ejercicio 5
+    public static void preordenWeb(NodoWeb raiz) {
+        if (raiz == null) return;
+        System.out.println("- " + raiz.nombre);
+        preordenWeb(raiz.izquierda);
+        preordenWeb(raiz.derecha);
+    }
+
+    public static void postordenWeb(NodoWeb raiz) {
+        if (raiz == null) return;
+        postordenWeb(raiz.izquierda);
+        postordenWeb(raiz.derecha);
+        System.out.println("- " + raiz.nombre);
+    }
+
+    public static void bfsWeb(NodoWeb raiz) {
+        if (raiz == null) return;
+        Queue<NodoWeb> cola = new LinkedList<>();
+        cola.add(raiz);
+
+        while (!cola.isEmpty()) {
+            NodoWeb actual = cola.poll();
+            System.out.println("- " + actual.nombre);
+            if (actual.izquierda != null) cola.add(actual.izquierda);
+            if (actual.derecha != null) cola.add(actual.derecha);
+        }
+    }
 
     public static void preorden(Nodo raiz) {
         if (raiz == null) return;
@@ -75,6 +116,7 @@ public class Main {
         // Si no es hoja, sigue buscando
         return contarHojas(raiz.izquierda) + contarHojas(raiz.derecha);
     }
+    
 
     public static void main(String[] args) {
         Nodo raiz = new Nodo(10);
@@ -136,6 +178,30 @@ public class Main {
         int totalHojas = contarHojas(raiz);
         System.out.println("La cantidad total de hojas en el arbol es: " + totalHojas);
 
+        // ==========================================
+        // EJERCICIO 5
+        // ==========================================
+        System.out.println("\n--- Ejercicio 5: Sistema Web ---");
+        
+        NodoWeb raizWeb = new NodoWeb("Sistema Web");
+        raizWeb.izquierda = new NodoWeb("Usuarios");
+        raizWeb.derecha = new NodoWeb("Inventario");
+        
+        raizWeb.izquierda.izquierda = new NodoWeb("Registrar");
+        raizWeb.izquierda.derecha = new NodoWeb("Buscar");
+        
+        raizWeb.derecha.izquierda = new NodoWeb("Productos");
+        raizWeb.derecha.derecha = new NodoWeb("Reportes");
+
+        System.out.println("\n1. Mostrar el menu principal (Preorden):");
+        preordenWeb(raizWeb);
+
+        System.out.println("\n2. Procesar primero los modulos internos (Postorden):");
+        postordenWeb(raizWeb);
+
+        System.out.println("\n3. Mostrar modulos nivel por nivel (BFS):");
+        bfsWeb(raizWeb);
+        
         System.out.println();
     }
 }
