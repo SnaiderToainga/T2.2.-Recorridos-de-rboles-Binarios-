@@ -73,6 +73,29 @@ public class Main {
 
         System.out.print("\nBFS: ");
         bfs(raiz);
+        
+        System.out.println();
+        // ==========================================
+        // EJERCICIO 2
+        // ==========================================
+        System.out.println("\n--- Ejercicio 2 ---");
+        // Agregamos 1 y 3 como hijos del nodo 2
+        raiz.izquierda.izquierda.izquierda = new Nodo(1);
+        raiz.izquierda.izquierda.derecha = new Nodo(3);
+        
+        // Agregamos 18 y 25 como hijos del nodo 20
+        raiz.derecha.derecha.izquierda = new Nodo(18);
+        raiz.derecha.derecha.derecha = new Nodo(25);
+
+        System.out.print("Preorden actualizado: ");
+        preorden(raiz);
+        System.out.print("\nInorden actualizado: ");
+        inorden(raiz);
+        System.out.print("\nPostorden actualizado: ");
+        postorden(raiz);
+        System.out.print("\nBFS actualizado: ");
+        bfs(raiz);
+        System.out.println();
 
         System.out.println();
     }
