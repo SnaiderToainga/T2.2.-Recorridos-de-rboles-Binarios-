@@ -50,6 +50,16 @@ public class Main {
             if (actual.derecha != null) cola.add(actual.derecha);
         }
     }
+    // ==========================================
+    // EJERCICIO 3
+    // ==========================================
+    public static int contarNodos(Nodo raiz) {
+        if (raiz == null) {
+            return 0; // Caso base: si no hay nodo, suma 0
+        }
+        // Suma 1 (el nodo actual) + los nodos de la izquierda + los de la derecha
+        return 1 + contarNodos(raiz.izquierda) + contarNodos(raiz.derecha);
+    }
 
     public static void main(String[] args) {
         Nodo raiz = new Nodo(10);
@@ -73,7 +83,7 @@ public class Main {
 
         System.out.print("\nBFS: ");
         bfs(raiz);
-        
+
         System.out.println();
         // ==========================================
         // EJERCICIO 2
@@ -97,6 +107,13 @@ public class Main {
         bfs(raiz);
         System.out.println();
 
+        // ==========================================
+        // EJERCICIO 3
+        // ==========================================
+        System.out.println("\n--- Ejercicio 3 ---");
+        int totalNodos = contarNodos(raiz);
+        System.out.println("La cantidad total de nodos en el arbol es: " + totalNodos);
+        
         System.out.println();
     }
 }
