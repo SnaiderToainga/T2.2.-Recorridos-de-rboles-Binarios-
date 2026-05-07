@@ -1,5 +1,7 @@
 #include <iostream>
 #include <queue>
+#include <string>
+
 using namespace std;
 
 struct Nodo {
@@ -78,6 +80,49 @@ int contarHojas(Nodo* raiz) {
     // Si no es hoja, sigue buscando en las ramas y suma los resultados
     return contarHojas(raiz->izquierda) + contarHojas(raiz->derecha);
 }
+// ==========================================
+// EJERCICIO 5: Árbol de Sistema Web
+// ==========================================
+struct NodoWeb {
+    string nombre;
+    NodoWeb* izquierda;
+    NodoWeb* derecha;
+    
+    NodoWeb(string n) {
+        nombre = n;
+        izquierda = NULL;
+        derecha = NULL;
+    }
+};
+
+void preordenWeb(NodoWeb* raiz) {
+    if (raiz == NULL) return;
+    cout << "- " << raiz->nombre << endl;
+    preordenWeb(raiz->izquierda);
+    preordenWeb(raiz->derecha);
+}
+
+void postordenWeb(NodoWeb* raiz) {
+    if (raiz == NULL) return;
+    postordenWeb(raiz->izquierda);
+    postordenWeb(raiz->derecha);
+    cout << "- " << raiz->nombre << endl;
+}
+
+void bfsWeb(NodoWeb* raiz) {
+    if (raiz == NULL) return;
+    queue<NodoWeb*> cola;
+    cola.push(raiz);
+
+    while (!cola.empty()) {
+        NodoWeb* actual = cola.front();
+        cola.pop();
+        cout << "- " << actual->nombre << endl;
+
+        if (actual->izquierda != NULL) cola.push(actual->izquierda);
+        if (actual->derecha != NULL) cola.push(actual->derecha);
+    }
+}
 
 int main() {
     Nodo* raiz = new Nodo(10);
@@ -135,6 +180,31 @@ int main() {
     cout << "\n--- Ejercicio 4 ---" << endl;
     int totalHojas = contarHojas(raiz);
     cout << "La cantidad total de hojas en el arbol es: " << totalHojas << endl;
+
+    // ==========================================
+    // EJERCICIO 5
+    // ==========================================
+    cout << "\n--- Ejercicio 5: Sistema Web ---" << endl;
     
+    // Armamos el árbol manualmente según el gráfico
+    NodoWeb* raizWeb = new NodoWeb("Sistema Web");
+    raizWeb->izquierda = new NodoWeb("Usuarios");
+    raizWeb->derecha = new NodoWeb("Inventario");
+    
+    raizWeb->izquierda->izquierda = new NodoWeb("Registrar");
+    raizWeb->izquierda->derecha = new NodoWeb("Buscar");
+    
+    raizWeb->derecha->izquierda = new NodoWeb("Productos");
+    raizWeb->derecha->derecha = new NodoWeb("Reportes");
+
+    cout << "\n1. Menu Principal (Preorden):" << endl;
+    preordenWeb(raizWeb);
+
+    cout << "\n2. Procesar modulos internos primero (Postorden):" << endl;
+    postordenWeb(raizWeb);
+
+    cout << "\n3. Modulos nivel por nivel (BFS):" << endl;
+    bfsWeb(raizWeb);
+
     return 0;
 }
